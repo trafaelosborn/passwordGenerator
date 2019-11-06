@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Password Generator</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/style.css">
+
+  </head>
+
+  <body>
+    <header>
+      <h1 style="margin-left: 35%">Password Generator</h1>
+    </header>
+
+    <div class="container">
+      <h2 id="containerHead">Generate a Password</h2>
+      <textarea
+        readonly
+        id="display"
+        placeholder="Your Secure Password"
+        aria-label="Generated Password"
+      ></textarea>
+      <input type="range" min="0" max="50" name="slider" id="slider">
+        <div class="checkboxes">
+          <input type="checkbox" name="option1" value="Upper"> Use Uppercase<br>
+          <input type="checkbox" name="option2" value="Lower"> Use Numbers<br>
+          <input type="checkbox" name="option33" value="Char"> Use Special Characters<br>
+        </div>
+      <button onclick="generate()" id="generatePassword">Generate</button>
+      <button onclick="" id="copy">
+        Copy to Clipboard
+      </button>
+      <div id="length"></div>
+    </div>
+    
+    // character arrays
+<script>
+var lowerCase = ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'a', 's', 'd', 'f', 'g', 'h', 'j' ,'k', 'l', 'z', 'x', 'c', 'v', 'b',  'n', 'm',];
+var  upperCase = ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'Z', 'X', 'C', 'V', 'B', 'N', 'M',];
+var numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0',]; 
+var characters = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', ':', ';', '+', '-', '_', '|',];
+
+// random characters
+
+let randomLower = lowerCase[Math.floor(Math.random()*lowerCase.length)];
+let randomUpper = upperCase[Math.floor(Math.random()*upperCase.length)];
+let randomNum = numbers[Math.floor(Math.random()*numbers.length)];
+let randomChar = characters[Math.floor(Math.random()*characters.length)];
+
+
+
+
+console.log(randomLower);
+console.log(randomUpper);
+console.log(randomNum);
+console.log(randomChar);
+
+function generate(){
+  let complexity = document.getElementById("slider").value;
+  let lower = "qwertyuiopasdfghjklzxcvbnm"
+  let password = "";
+
+  for (var i = 0; i > complexity; i++){
+    password = password + lower.charAt(Math.floor(math.random() * Math.floor (lower.length - 1)));
+}
+ document.getElementById("display").value = password;
+
+}
+
+
+
+
+</script>
+
+  </body>
+</html>
+
+
+
+.container {
+    background-color: lightgray;
+    width: 25%;
+    height: 325pxpx;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    padding: 20px;
+    
+}
+
+#display {
+  
+    width: 100%;
+    padding: 20px;
+}
+
+#containerHead {
+    color: dodgerblue;
+}
+
+#generatePassword {
+ margin-left: 5%;
+ padding: 5px; 
+}
+
+#copy {
+    margin-right: 5%;
+    padding: 5px;
+   
+}
+
+#slider {
+    width: 100%;
+    padding: 20px;
+}
+
+.checkboxes {
+    padding: 5px;
+    margin-bottom: 30px;
+}

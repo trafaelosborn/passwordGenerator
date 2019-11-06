@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Password Generator</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/style.css">
+
+  </head>
+
+ <body>
+
+    <nav class="navbar navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Random Password Generator</a>
+    </nav>
+
+    <div class="container">
+      
+      <div class="row">
+
+        <div class="col-lg-8 col-sm-12 mx-auto">
+          
+          <div class="content">
+            <h4>Random Password Generator</h4>
+            <br />
+            <input type="text" id="display">
+            <br />
+            <input type="range" min="0" max="50" name="slider" id="slider">
+            <br />
+            <div class="checkboxes">
+                <input type="checkbox" name="option1" id="Upper"> Use Uppercase<br>
+                <input type="checkbox" name="option2" id="Nums"> Use Numbers<br>
+                <input type="checkbox" name="option3" id="Spec"> Use Special Characters<br>
+                <input type="checkbox" name="option4" id="Lower">Use Lowercase<br>
+              </div>
+            <br />
+            <button onclick="generate()">Generate</button>
+            <button onclick="copyPasasword()">Copy to Clipboard</button>
+            <div id="length"></div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <script>
+    
+    function generate(){
+
+    var complexity = document.getElementById("slider").value;
+
+    var lowercase = "qwertyuiopasdfghjklzxcvbnm";
+    var uppercase = "QWERTYUIOPASDFGHJKLZXCVBNM";
+    var characters = "!@#$%^&*()_-+=:;{}[]|\?/.>,<"
+    var numbers = "1234567890"
+
+    var password = "";
+
+
+    //uppercase
+      if (document.getElementById("Upper").checked == true && document.getElementById("Lower").checked == false && document.getElementById("Spec").checked == false && document.getElementById("Nums").checked == false) {
+      for(var i = 0; i <= complexity; i++){
+      password = password + uppercase.charAt(Math.floor(Math.random() * Math.floor(uppercase.length - 1)));}
+   }
+     
+    document.getElementById("display").value = password;
+
+   //lowercase
+    if (document.getElementById("Upper").checked == false && document.getElementById("Lower").checked == true && document.getElementById("Spec").checked == false && document.getElementById("Nums").checked == false) {
+      for(var i = 0; i <= complexity; i++){
+      password = password + lowercase.charAt(Math.floor(Math.random() * Math.floor(lowercase.length - 1)));}
+   }
+     
+    document.getElementById("display").value = password;
+
+    
+  
+
+   
+     
+    
+    }
+
+    document.getElementById("length").innerHTML = "Length: 25";
+
+    document.getElementById("slider").oninput = function(){
+
+      if(document.getElementById("slider").value > 0){
+        document.getElementById("length").innerHTML = "length: " + document.getElementById("slider").value;
+      }
+      else{
+        document.getElementById("length").innerhtml = "Lenght: 1";
+      }
+    }
+    
+    function copyPasasword(){
+
+      document.getElementById("display").select();
+
+      document.execCommand("copy");
+
+      alert("Password copied to clipboard");
+
+    }
+
+    </script>
+ </body>
